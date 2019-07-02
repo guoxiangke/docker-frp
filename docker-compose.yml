@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    ports:
+      - "7001:2001"
     volumes:
       - ./config:/frp/config
       - ./log:/frp/log
@@ -33,7 +35,8 @@ services:
 #     - "443:443" # vhost_https_port
 #     # WARNING: container up/down will be VERY SLOW (even failed)
 #     # if too much ports opened here!
-      - "20000-20020:2000-2020"
+      # - "20000-20020:2000-2020"
+      - "2001:2001"
     entrypoint:
       - '/frp/frps'
       - '-c'
